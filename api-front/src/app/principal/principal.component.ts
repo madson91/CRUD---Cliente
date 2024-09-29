@@ -12,6 +12,8 @@ export class PrincipalComponent {
   btnCadastro:boolean = true;
 
   clientes:Cliente[] = [];
+
+  cliente:Cliente = new Cliente();
   
   constructor(private servico:ClienteService){}
   
@@ -23,6 +25,12 @@ export class PrincipalComponent {
   buscarClientes():void{
     this.servico.selecionarCliente()
     .subscribe(retorno => this.clientes = retorno)
+  }
+
+  cadastrarCliente():void{
+    this.servico.cadastrar(this.cliente)
+    .subscribe(ret => {this.clientes.push(ret)})
+    this.cliente = new Cliente();
   }
 
 

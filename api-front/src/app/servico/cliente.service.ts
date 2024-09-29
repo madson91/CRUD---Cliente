@@ -17,5 +17,9 @@ export class ClienteService {
 
   }
 
+  cadastrar(obj:Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(this.url+'/', obj);
+  }
+
 
 }
