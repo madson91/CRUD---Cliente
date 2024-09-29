@@ -21,5 +21,8 @@ export class ClienteService {
     return this.http.post<Cliente>(this.url+'/', obj);
   }
 
+  alterar(obj:Cliente):Observable<Cliente>{
+    return this.http.put<Cliente>(this.url+'/', obj);
+  }
 
 }
