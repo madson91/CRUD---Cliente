@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Cliente } from '../modelo/Cliente';
+import { ClienteService } from '../servico/cliente.service';
 
 @Component({
   selector: 'app-principal',
@@ -8,5 +10,24 @@ import { Component } from '@angular/core';
 export class PrincipalComponent {
 
   btnCadastro:boolean = true;
+
+  clientes:Cliente[] = [];
+  
+  constructor(private servico:ClienteService){}
+  
+  ngOnInit(){
+    this.buscarClientes();
+
+  }
+
+  buscarClientes():void{
+    this.servico.selecionarCliente()
+    .subscribe(retorno => this.clientes = retorno)
+  }
+
+
+  
+
+
 
 }
