@@ -30,7 +30,6 @@ public class Controle {
     @PostMapping("/")
     public Cliente cadastrar(@RequestBody Cliente c) {
         repo.save(c);
-
         return c;
     }
 
@@ -52,7 +51,7 @@ public class Controle {
     }
 
     //tratando erro de usuario inexistente
-    //  @DeleteMapping("/{codigo}")
+    //  @DeleteMapping("/{cokjndigo}")
     // public ResponseEntity<Void> delete2(@PathVariable("codigo") long codigo) {
     //     try {
     //         repo.deleteById(codigo);

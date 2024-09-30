@@ -59,14 +59,41 @@ export class PrincipalComponent {
       this.clientes[posicao] = ret;
       this.limparCliente();
       alert('Cliente Alterado com Sucesso.')
-      this.visibilidadeBotoes();
+      this.isVisibilidadeBotoes();
 
     })
   }
 
-  visibilidadeBotoes(){
+  removerCliente():void{
+    this.servico.remover(this.cliente.codigo)
+    .subscribe(ret =>{
+
+      let posicao = this.clientes.findIndex(obj =>{
+        return obj.codigo == this.cliente.codigo;
+      });
+
+      this.clientes.splice(posicao,1);
+      this.limparCliente();
+      alert('Cliente Apagado com sucesso')
+      this.isVisibilidadeBotoes();
+
+    })
+  }
+
+  cancelar():void{
+    this.limparCliente();
+    this.isVisibilidadeBotoes();
+
+  }
+
+  isVisibilidadeBotoes(){
     this.btnCadastro = true;
     this.tabela = true;
+  }
+
+  isNotVisibilidadeBotoes(){
+    this.btnCadastro = false;
+    this.tabela = false;
   }
 
   limparCliente():void{
